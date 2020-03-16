@@ -17,6 +17,7 @@ services:
 
   web:
     image: registry.gitlab.com/smart-home-the-verse/433mhz-middle-man:latest
+    container_name: 433mhz-middle-man
     depends_on: 
       - mosquitto
     ports:
@@ -25,6 +26,7 @@ services:
 
   web-docker-hub:
     image: rootthekid/433mhz-middle-man:latest
+    container_name: 433mhz-middle-man
     depends_on: 
       - mosquitto
     ports: 
