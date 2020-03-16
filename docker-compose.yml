@@ -22,3 +22,11 @@ services:
     ports:
       - 3000:80
     restart: always
+
+  web-docker-hub:
+    image: rootthekid/433mhz-middle-man:latest
+    depends_on: 
+      - mosquitto
+    ports: 
+      - 3000:80
+    restart: always
