@@ -15,15 +15,6 @@ services:
       - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
     restart: always
 
-  web:
-    image: registry.gitlab.com/smart-home-the-verse/zhu-que:latest
-    container_name: zhu-que
-    depends_on: 
-      - mosquitto
-    ports:
-      - 80:80
-    restart: always
-
   web-docker-hub:
     image: rootthekid/433mhz-middle-man:latest
     container_name: 433mhz-middle-man
@@ -45,4 +36,15 @@ services:
       - mosquitto
     ports: 
       - 8080:3000
+    restart: always
+
+  web:
+    image: rootthekid/zhu-que:latest
+    container_name: zhu-que
+    depends_on: 
+      - mosquitto
+      - xuan-wu-docker-hub
+      - web-docker-hub
+    ports:
+      - 80:80
     restart: always
